@@ -1,0 +1,30 @@
+extern void printa(int num);
+
+struct  LinkList{
+	int num;
+	struct LinkList *next;
+};
+
+void f(struct LinkList *A){
+	struct LinkList *p;
+	p =A;
+}
+
+void g(int arr[]){
+
+}
+
+void h(float *s){
+
+}
+
+int main(){
+
+	struct LinkList *p;
+	f(p);
+
+	float *q;
+	h(q);
+
+	return 0;
+}

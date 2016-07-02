@@ -1,0 +1,59 @@
+extern void printa(int num);
+
+int H[10] = {3, 1, 5, 7, 2, 4, 9, 6, 10, 8} ;
+
+void HeapAdjust(int s, int length){
+	int tmp = H[ s ] ;
+	int child =  2 * s  + 1 ;
+	int index ;
+	while (child < length) {
+	    	if( child + 1 < length ) {
+	        		if(H[ child ] < H[ child + 1 ]){
+	        			child = child + 1 ;
+	    		}
+	    	}
+	    	index = H[s] ;
+	    	if( index < H[ child ] ) {
+	        		H[ s ] = H[ child ] ;
+	        		s = child ;
+	        		child = 2 * s + 1 ;
+	    	} else {
+	         		break ;
+	    	}
+	    	H[s] = tmp ;
+	}
+}
+
+void BuildingHeap(int length){
+	int i = (length - 1) / 2 ;
+    	while(i >= 0){
+		HeapAdjust(i, length);
+		i = i - 1 ;
+    	}
+}
+
+void HeapSort(int length) {
+    	BuildingHeap(length);
+    	int i = length - 1;
+    	while( i > 0 ){
+    		int temp = H[i];
+        		H[i] = H[0];
+        		H[0] = temp;
+
+        		HeapAdjust(0, i);
+        		i = i - 1;
+    	}
+}
+
+int main(){
+    	HeapSort(10);
+
+    	int k = 0;
+    	int tmp;
+    	while(k < 10){
+    		tmp = H[k];
+    		printa(tmp);
+    		k = k + 1;
+    	}
+    	return 0;
+}
